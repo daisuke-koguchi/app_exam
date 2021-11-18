@@ -1,6 +1,13 @@
-<div class="container">]
+<div class="container-fluid">
   <h1>ブログの詳細</h1>
   <% notice %>
+  <div class="image_content">
+    <% if @blog.image?%>
+      <p>
+        <%= image_tag @blog.image.url %>
+      </p>
+    <% end %>
+  </div>
   <table class="table" >
     <tbody>
       <tr>

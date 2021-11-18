@@ -19,6 +19,12 @@
         <%= form.label :content %>
         <%= form.text_field :content ,class: 'form-control form-control-lg' %>
       </div>
+      <div class="image_content">
+        <%= form.label :image %>
+        <% #image_tag @blog.image.thumb.url %>
+        <%= form.file_field :image %>
+        <%= form.hidden_field :image_cache %>
+      </div>
       <%= form.submit %>
     <% end %>
     <%= link_to "ブログ一覧画面へ", blogs_path ,class: 'btn btn-info'%>

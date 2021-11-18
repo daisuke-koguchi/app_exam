@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_16_013513) do
+ActiveRecord::Schema.define(version: 2021_11_18_112109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2021_11_16_013513) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
+    t.text "image"
     t.index ["user_id"], name: "index_blogs_on_user_id"
   end
 
@@ -31,6 +32,16 @@ ActiveRecord::Schema.define(version: 2021_11_16_013513) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["blog_id"], name: "index_favorites_on_blog_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "feeds", force: :cascade do |t|
+    t.text "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.bigint "blog_id"
+    t.index ["blog_id"], name: "index_feeds_on_blog_id"
+    t.index ["user_id"], name: "index_feeds_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -45,4 +56,6 @@ ActiveRecord::Schema.define(version: 2021_11_16_013513) do
   add_foreign_key "blogs", "users"
   add_foreign_key "favorites", "blogs"
   add_foreign_key "favorites", "users"
+  add_foreign_key "feeds", "blogs"
+  add_foreign_key "feeds", "users"
 end

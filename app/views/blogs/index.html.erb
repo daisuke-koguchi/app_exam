@@ -1,14 +1,14 @@
-<div class="container">
+<div class="container-fluid">
   <%= flash[:notice] %>
   <h1>ブログ一覧画面</h1>
   <%= link_to "ブログ新規作成", new_blog_path ,class: 'btn btn-primary'%>
   <table class="table">
     <thead>
     <tr>
-      <th>投稿写真</th>
+      <th style="width: 15%">投稿写真</th>
       <th>ブログ作成者</th>
       <th>タイトル</th>
-      <th>内容</th>
+      <th style="width: 30%">内容</th>
       <th>作成日時</th>
       <th>ブログ詳細</th>
       <th>ブログ編集</th>
@@ -20,6 +20,8 @@
     <tr>
       <% if blog.image?%>
       <td><%= image_tag(blog.image.thumb.url) %></td>
+      <% else %>
+      <td><%= image_tag('noimage.png',width: '50%', height:'50%')%></td>
       <% end %>
       <td><%= blog.user.name %></td>
       <td><%= blog.title %></td>

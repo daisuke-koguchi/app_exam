@@ -21,12 +21,14 @@
       </div>
       <div class="image_content">
         <%= form.label :image %>
-        <% #image_tag @blog.image.thumb.url %>
         <%= form.file_field :image %>
         <%= form.hidden_field :image_cache %>
       </div>
+      <br>
       <%= form.submit %>
     <% end %>
+    <br>
+    <br>
     <%= link_to "ブログ一覧画面へ", blogs_path ,class: 'btn btn-info'%>
   </div>
 </div>

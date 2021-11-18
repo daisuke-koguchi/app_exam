@@ -10,7 +10,7 @@
 <% end %>
 <div class="container">
   <div class="blog_content md-4">
-    <%= form_with(model:@blog, local: true ) do |form| %>
+    <%= form_with(model:@blog, local: true, url:choose_new_or_edit) do |form| %>
       <div class="blog_label form-group">
         <%= form.label :title %>
           <%= form.text_field :title ,class: 'form-control form-control-lg'%>
@@ -21,11 +21,13 @@
       </div>
       <div class="image_content">
         <%= form.label :image %>
+        <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
         <%= form.file_field :image %>
         <%= form.hidden_field :image_cache %>
       </div>
       <br>
-      <%= form.submit %>
+      <%= form.submit "登録する"%>
+      <% #form.submit "戻る", name: 'back' %>
     <% end %>
     <br>
     <br>

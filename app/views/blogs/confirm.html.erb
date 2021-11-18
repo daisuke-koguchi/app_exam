@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>ブログ確認画面</h1>
+  <%= form_with(model: @blog, local: true, url: blogs_path ) do |form| %>
+    <%= form.hidden_field :title %>
+    <%= form.hidden_field :content %>
+    <P>ブログタイトル:<%= @blog.title%></p>
+    <P><%= form.file_field :image %></P>
+    <P><%= image_tag(@blog.image.url) if @blog.image.url && @blog.image.url %></P>
+    <%= form.hidden_field :image_cache%>
+    <p>ブログ内容:<%= @blog.content%></p>
+    <%= form.submit "投稿する"%>
+  <% end %>
+    <%= %>
+  <%= form_with(model:@blog, local:true, url:new_blog_path, method:"get") do |form| %>
+    <%= form.hidden_field :image_cache %>
+    <%= form.submit "戻る", name:'back' %>
+  <% end %>
+</div>

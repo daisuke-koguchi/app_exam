@@ -6,17 +6,23 @@ class BlogsController < ApplicationController
   end
 
   def new
-    @blog = Blog.new
+    @blog = Blog.new 
+  end
+
+  def confirm
+    @blog = Blog.new(blog_params)
+    @blog.user_id = current_user.id
+    render :new if @blog.invalid?
   end
 
   def create
     @blog = Blog.new(blog_params)
     @blog.user_id = current_user.id
-    if @blog.save
-      redirect_to blogs_path, notice: "ブログ「#{@blog.title}」を作成しました"
-    else
-      render :new
-    end
+      if @blog.save
+        redirect_to blogs_path, notice: "ブログ「#{@blog.title}」を作成しました"
+      else
+        render :new
+      end
   end
 
   def show

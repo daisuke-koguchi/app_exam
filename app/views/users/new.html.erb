@@ -10,6 +10,9 @@
     </div>
   <% end %>
 <h1>新規登録</h1>
+  <div class="alert alert-info">
+      名前・メールアドレス・パスワード・確認用パスワードを入力してください。
+  </div>
   <div class="user_content">
     <%= form_with(model:@user ,local: true) do |form| %>
     <div class="user_name form-group ">
@@ -29,6 +32,6 @@
       <%= form.password_field :password_confirmation ,class: 'form-control form-control-lg' %>
     </div>
     <%= form.submit %>
-<% end %>
+    <% end %>
   </div>
 </div>

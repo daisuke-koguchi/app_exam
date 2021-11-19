@@ -1,18 +1,24 @@
 <div class="container">
-  <h1>ブログ確認画面</h1>
+  <h1>ブログ・写真確認画面</h1>
+  <div class="alert alert-info">
+      ブログのタイトル・内容と写真を確認してください。<br>
+      この画面では写真のみ変更できます。変更したら「投稿する」ボタンを押してください。
+  </div>
   <%= form_with(model: @blog, local: true, url: blogs_path ) do |form| %>
     <%= form.hidden_field :title %>
     <%= form.hidden_field :content %>
     <P>ブログタイトル:<%= @blog.title%></p>
-    <P><%= form.file_field :image %></P>
-    <P><%= image_tag(@blog.image.url) if @blog.image.url && @blog.image.url %></P>
-    <%= form.hidden_field :image_cache%>
     <p>ブログ内容:<%= @blog.content%></p>
+    
+    <P><%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %></P>
+    <P><%= form.file_field :image %></P>
+    <%= form.hidden_field :image_cache%>
     <%= form.submit "投稿する"%>
   <% end %>
     <%= %>
   <%= form_with(model:@blog, local:true, url:new_blog_path, method:"get") do |form| %>
     <%= form.hidden_field :image_cache %>
+    <br>
     <%= form.submit "戻る", name:'back' %>
   <% end %>
 </div>

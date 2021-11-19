@@ -1,18 +1,23 @@
 <div class="container-fluid">
   <%= flash[:notice] %>
   <h1>ブログ一覧画面</h1>
-  <%= link_to "ブログ新規作成", new_blog_path ,class: 'btn btn-primary'%>
+  <div class="alert alert-info">
+    ブログ・写真投稿ボタンを押して投稿してください<br>
+    詳細・編集・削除ボタンを操作してブログ・写真を操作できます
+  </div>
+  <%= link_to "ブログ・写真投稿ボタン", new_blog_path ,class: 'btn btn-primary'%>
+  <br>
   <table class="table">
     <thead>
     <tr>
       <th style="width: 15%">投稿写真</th>
-      <th>ブログ作成者</th>
+      <th>作成者</th>
       <th>タイトル</th>
-      <th style="width: 30%">内容</th>
+      <th style="width: 30%">ブログ内容</th>
       <th>作成日時</th>
-      <th>ブログ詳細</th>
-      <th>ブログ編集</th>
-      <th>ブログ削除</th>
+      <th>詳細ボタン</th>
+      <th>編集ボタン</th>
+      <th>削除ボタン</th>
     </tr>
     </thead>
     <tbody>
